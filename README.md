@@ -1,10 +1,10 @@
-# Table Reflow
+# Tablefold
 
 ![A wide data table on the left, an arrow, and the same data on the right as a stack of cards where each value sits under its column name.](.wordpress-org/banner-1544x500.png)
 
 Makes `core/table` blocks reflow into stacked cards on small screens. Server-rendered PHP + CSS, no JavaScript, ARIA roles preserved.
 
-[![CI](https://github.com/Fyrins/table-reflow/actions/workflows/ci.yml/badge.svg)](https://github.com/Fyrins/table-reflow/actions/workflows/ci.yml)
+[![CI](https://github.com/Fyrins/tablefold/actions/workflows/ci.yml/badge.svg)](https://github.com/Fyrins/tablefold/actions/workflows/ci.yml)
 [![License: GPL v2](https://img.shields.io/badge/license-GPL--2.0--or--later-blue.svg)](LICENSE)
 [![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ea4aaa.svg)](https://github.com/sponsors/Fyrins)
 
@@ -98,7 +98,7 @@ See [`tests/test-cases.md`](tests/test-cases.md) for the full matrix of table st
 // Any value added here needs matching rules in a stylesheet you enqueue yourself:
 // a CSS media query condition cannot read a custom property.
 add_filter(
-	'table_reflow_breakpoint_values',
+	'tablefold_breakpoint_values',
 	function ( $values ) {
 		$values[] = '1024';
 		return $values;
@@ -107,7 +107,7 @@ add_filter(
 
 // Change the breakpoint used by tables that do not specify one.
 add_filter(
-	'table_reflow_default_breakpoint',
+	'tablefold_default_breakpoint',
 	function () {
 		return '782';
 	}
@@ -116,7 +116,7 @@ add_filter(
 // Rename the scrollable region announced for tables that cannot be stacked.
 // Only used when the block has no caption of its own.
 add_filter(
-	'table_reflow_scrollable_label',
+	'tablefold_scrollable_label',
 	function () {
 		return __( 'Data table, scroll to see more', 'your-theme' );
 	}
@@ -125,22 +125,22 @@ add_filter(
 
 ### CSS custom properties
 
-Redefine any of these on `.table-reflow`, or anywhere above it:
+Redefine any of these on `.tablefold`, or anywhere above it:
 
 | Property | Default | Role |
 | --- | --- | --- |
-| `--table-reflow-label-color` | `currentcolor` | Colour of the column name |
-| `--table-reflow-label-weight` | `600` | Weight of the column name |
-| `--table-reflow-label-spacing` | `0.25em` | Gap between a label and its value |
-| `--table-reflow-cell-spacing` | `0.5em` | Vertical padding of a stacked cell |
-| `--table-reflow-row-spacing` | `1.5em` | Gap between two stacked rows |
-| `--table-reflow-row-border-width` | `1px` | Width of the row separator |
+| `--tablefold-label-color` | `currentcolor` | Colour of the column name |
+| `--tablefold-label-weight` | `600` | Weight of the column name |
+| `--tablefold-label-spacing` | `0.25em` | Gap between a label and its value |
+| `--tablefold-cell-spacing` | `0.5em` | Vertical padding of a stacked cell |
+| `--tablefold-row-spacing` | `1.5em` | Gap between two stacked rows |
+| `--tablefold-row-border-width` | `1px` | Width of the row separator |
 
 ## Install from this repository
 
 ```bash
-git clone git@github.com:Fyrins/table-reflow.git
-cd table-reflow
+git clone git@github.com:Fyrins/tablefold.git
+cd tablefold
 composer install          # linters
 npm ci && npm run build   # editor script and stylesheet
 ```
@@ -167,9 +167,9 @@ near-identical blocks by hand is how they drift apart.
 
 `@wordpress/scripts` also writes `build/index.asset.php`, which carries the exact
 dependency array and a content hash used as the asset version. Both are read by
-`Table_Reflow_Plugin::register_assets()` instead of being declared by hand.
+`Tablefold_Plugin::register_assets()` instead of being declared by hand.
 
-`phpcs.xml.dist` enforces the WordPress ruleset, the `table_reflow` prefix on every global symbol, the `table-reflow` text domain on every translated string, and PHP 7.4 compatibility.
+`phpcs.xml.dist` enforces the WordPress ruleset, the `tablefold` prefix on every global symbol, the `tablefold` text domain on every translated string, and PHP 7.4 compatibility.
 
 The plugin must also pass [Plugin Check](https://wordpress.org/plugins/plugin-check/) with no error and no warning. CI runs both on every push and pull request.
 

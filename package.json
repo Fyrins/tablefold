@@ -1,5 +1,5 @@
 {
-	"name": "table-reflow",
+	"name": "tablefold",
 	"version": "1.0.0",
 	"description": "Makes core/table blocks reflow into stacked cards on small screens.",
 	"scripts": {
@@ -11,14 +11,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Fyrins/table-reflow.git"
+		"url": "git+https://github.com/Fyrins/tablefold.git"
 	},
 	"author": "Alexandre Revire",
 	"license": "GPL-2.0-or-later",
 	"bugs": {
-		"url": "https://github.com/Fyrins/table-reflow/issues"
+		"url": "https://github.com/Fyrins/tablefold/issues"
 	},
-	"homepage": "https://github.com/Fyrins/table-reflow",
+	"homepage": "https://github.com/Fyrins/tablefold",
 	"devDependencies": {
 		"@wordpress/block-editor": "^17.1.0",
 		"@wordpress/components": "^40.1.0",

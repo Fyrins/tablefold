@@ -1,5 +1,5 @@
 /**
- * Table Reflow - editor integration.
+ * Tablefold - editor integration.
  *
  * Adds two attributes to the core table block and the controls that drive them.
  *
@@ -22,7 +22,7 @@ import './style.scss';
 
 const TARGET_BLOCK = 'core/table';
 
-const settings = window.tableReflowEditor || {};
+const settings = window.tablefoldEditor || {};
 const breakpoints = Array.isArray( settings.breakpoints ) ? settings.breakpoints : [];
 const defaultBreakpoint = settings.defaultBreakpoint || '600';
 
@@ -45,11 +45,11 @@ function addAttributes( blockSettings, name ) {
 		...blockSettings,
 		attributes: {
 			...blockSettings.attributes,
-			tableReflow: {
+			tablefold: {
 				type: 'boolean',
 				default: false,
 			},
-			tableReflowBreakpoint: {
+			tablefoldBreakpoint: {
 				type: 'string',
 				default: defaultBreakpoint,
 			},
@@ -63,44 +63,44 @@ function addAttributes( blockSettings, name ) {
  * Uses the standard components, each with an explicit label and help text, so
  * the controls inherit the editor's own accessibility behaviour.
  */
-const withTableReflowControls = createHigherOrderComponent(
+const withTablefoldControls = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
 		if ( TARGET_BLOCK !== props.name || ! props.isSelected ) {
 			return <BlockEdit { ...props } />;
 		}
 
 		const { attributes, setAttributes } = props;
-		const isEnabled = !! attributes.tableReflow;
+		const isEnabled = !! attributes.tablefold;
 
 		return (
 			<>
 				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody title={ __( 'Small screen display', 'table-reflow' ) } initialOpen={ false }>
+					<PanelBody title={ __( 'Small screen display', 'tablefold' ) } initialOpen={ false }>
 						<ToggleControl
 							__nextHasNoMarginBottom
-							label={ __( 'Stack on small screens', 'table-reflow' ) }
+							label={ __( 'Stack on small screens', 'tablefold' ) }
 							checked={ isEnabled }
 							help={ __(
 								'Below the chosen width, each row is shown as a card and every cell is preceded by its column name, instead of the table scrolling sideways. Needs a header row and no merged cells; a table that does not qualify keeps horizontal scrolling.',
-								'table-reflow',
+								'tablefold',
 							) }
-							onChange={ ( value ) => setAttributes( { tableReflow: value } ) }
+							onChange={ ( value ) => setAttributes( { tablefold: value } ) }
 						/>
 						{ isEnabled && breakpoints.length > 0 && (
 							<SelectControl
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
-								label={ __( 'Stack below', 'table-reflow' ) }
-								value={ attributes.tableReflowBreakpoint || defaultBreakpoint }
+								label={ __( 'Stack below', 'tablefold' ) }
+								value={ attributes.tablefoldBreakpoint || defaultBreakpoint }
 								options={ breakpoints }
 								help={ __(
 									'Screen width under which the table switches to the stacked layout.',
-									'table-reflow',
+									'tablefold',
 								) }
 								onChange={ ( value ) =>
 									setAttributes( {
-										tableReflowBreakpoint: value,
+										tablefoldBreakpoint: value,
 									} )
 								}
 							/>
@@ -110,8 +110,8 @@ const withTableReflowControls = createHigherOrderComponent(
 			</>
 		);
 	},
-	'withTableReflowControls',
+	'withTablefoldControls',
 );
 
-addFilter( 'blocks.registerBlockType', 'table-reflow/attributes', addAttributes );
-addFilter( 'editor.BlockEdit', 'table-reflow/controls', withTableReflowControls );
+addFilter( 'blocks.registerBlockType', 'tablefold/attributes', addAttributes );
+addFilter( 'editor.BlockEdit', 'tablefold/controls', withTablefoldControls );

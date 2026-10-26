@@ -21,8 +21,8 @@ see it?
 ## Getting set up
 
 ```bash
-git clone git@github.com:Fyrins/table-reflow.git
-cd table-reflow
+git clone git@github.com:Fyrins/tablefold.git
+cd tablefold
 composer install          # linters
 npm ci && npm run build   # editor script and stylesheet
 ```
@@ -56,24 +56,14 @@ announce.
 ## Translations
 
 Strings are translated just in time; the plugin calls no `load_plugin_textdomain()`.
+Translations are contributed on [translate.wordpress.org](https://translate.wordpress.org/)
+and delivered as language packs, so the repository ships no `.po`, `.mo` or `.json`
+file, only the template.
 
 Regenerate the template after changing any string:
 
 ```bash
-wp i18n make-pot . languages/table-reflow.pot --slug=table-reflow --domain=table-reflow --exclude=vendor,node_modules,tests
-wp i18n update-po languages/table-reflow.pot languages/
-wp i18n make-mo languages/
-wp i18n make-json languages/ --no-purge
-
-# make-json names the file after the md5 of the path found in the .po
-# references, which is src/index.js, while the enqueued script is
-# build/index.js. Rename it after the script handle instead: core's
-# _load_script_textdomain_from_src() looks for
-# <domain>-<locale>-<handle>.json first when a path is passed to
-# wp_set_script_translations(), before trying any md5, so this name survives
-# the build layout changing.
-mv languages/table-reflow-fr_FR-*.json \
-   languages/table-reflow-fr_FR-table-reflow-editor.json
+wp i18n make-pot . languages/tablefold.pot --slug=tablefold --domain=tablefold --exclude=vendor,node_modules,tests,build
 ```
 
 Never put a variable or a concatenation inside a translation function, and always
@@ -84,14 +74,14 @@ put a `/* translators: */` comment above a string carrying a placeholder.
 Only a maintainer can do this. The version number lives in three places and the
 deploy workflow refuses to publish when they disagree:
 
-1. the `Version` header of `table-reflow.php`;
+1. the `Version` header of `tablefold.php`;
 2. the `Stable tag` of `readme.txt`;
 3. the Git tag.
 
 Steps:
 
 ```bash
-# 1. Bump the version in table-reflow.php, readme.txt and the TABLE_REFLOW_VERSION constant.
+# 1. Bump the version in tablefold.php, readme.txt and the TABLEFOLD_VERSION constant.
 # 2. Add the release section to CHANGELOG.md and to the Changelog of readme.txt.
 # 3. Commit, then tag.
 git tag -a v1.0.1 -m "Release 1.0.1"

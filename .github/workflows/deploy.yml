@@ -26,8 +26,8 @@ jobs:
           set -euo pipefail
 
           TAG_VERSION="${GITHUB_REF_NAME#v}"
-          HEADER_VERSION="$(sed -n 's/^ \* Version:[[:space:]]*\(.*\)$/\1/p' table-reflow.php | head -n1 | tr -d '[:space:]')"
-          CONST_VERSION="$(sed -n "s/.*TABLE_REFLOW_VERSION'[^']*'\([^']*\)'.*/\1/p" table-reflow.php | head -n1)"
+          HEADER_VERSION="$(sed -n 's/^ \* Version:[[:space:]]*\(.*\)$/\1/p' tablefold.php | head -n1 | tr -d '[:space:]')"
+          CONST_VERSION="$(sed -n "s/.*TABLEFOLD_VERSION'[^']*'\([^']*\)'.*/\1/p" tablefold.php | head -n1)"
           STABLE_TAG="$(sed -n 's/^Stable tag:[[:space:]]*\(.*\)$/\1/p' readme.txt | head -n1 | tr -d '[:space:]')"
 
           echo "Git tag:        ${TAG_VERSION}"
@@ -43,7 +43,7 @@ jobs:
           done
 
           if [ "${FAILED}" -ne 0 ]; then
-            echo "::error::Version mismatch. The Git tag, the plugin header, TABLE_REFLOW_VERSION and the readme stable tag must all match."
+            echo "::error::Version mismatch. The Git tag, the plugin header, TABLEFOLD_VERSION and the readme stable tag must all match."
             exit 1
           fi
 
@@ -76,7 +76,7 @@ jobs:
 
     environment:
       name: wordpress-org
-      url: https://wordpress.org/plugins/table-reflow/
+      url: https://wordpress.org/plugins/tablefold/
 
     steps:
       - name: Check out the repository
@@ -109,7 +109,7 @@ jobs:
         with:
           generate-zip: true
         env:
-          SLUG: table-reflow
+          SLUG: tablefold
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
 
@@ -150,4 +150,4 @@ jobs:
             --title "${GITHUB_REF_NAME}" \
             --notes-file release-notes.md \
             --verify-tag \
-            "${ZIP_PATH}#table-reflow-${VERSION}.zip"
+            "${ZIP_PATH}#tablefold-${VERSION}.zip"

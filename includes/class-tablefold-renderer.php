@@ -2,7 +2,7 @@
 /**
  * Server-side transformation of the table block.
  *
- * @package TableReflow
+ * @package Tablefold
  * @since   1.0.0
  */
 
@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 1.0.0
  */
-final class Table_Reflow_Renderer {
+final class Tablefold_Renderer {
 
 	/**
 	 * Class marking a table that stacks on small screens.
@@ -34,7 +34,7 @@ final class Table_Reflow_Renderer {
 	 * @since 1.0.0
 	 * @var   string
 	 */
-	const STACKED_CLASS = 'table-reflow';
+	const STACKED_CLASS = 'tablefold';
 
 	/**
 	 * Class prefix carrying the chosen breakpoint.
@@ -42,7 +42,7 @@ final class Table_Reflow_Renderer {
 	 * @since 1.0.0
 	 * @var   string
 	 */
-	const BREAKPOINT_CLASS_PREFIX = 'table-reflow--bp-';
+	const BREAKPOINT_CLASS_PREFIX = 'tablefold--bp-';
 
 	/**
 	 * Class marking a container that keeps horizontal scrolling.
@@ -50,7 +50,7 @@ final class Table_Reflow_Renderer {
 	 * @since 1.0.0
 	 * @var   string
 	 */
-	const SCROLL_CLASS = 'table-reflow-scroll';
+	const SCROLL_CLASS = 'tablefold-scroll';
 
 	/**
 	 * Class marking the visually hidden header section.
@@ -58,7 +58,7 @@ final class Table_Reflow_Renderer {
 	 * @since 1.0.0
 	 * @var   string
 	 */
-	const HEAD_CLASS = 'table-reflow__head';
+	const HEAD_CLASS = 'tablefold__head';
 
 	/**
 	 * Handle of the front-end stylesheet to enqueue when a table is transformed.
@@ -147,11 +147,11 @@ final class Table_Reflow_Renderer {
 	 * @return bool True when the stacked display is requested.
 	 */
 	private function is_enabled( $block ) {
-		if ( ! isset( $block['attrs']['tableReflow'] ) ) {
+		if ( ! isset( $block['attrs']['tablefold'] ) ) {
 			return false;
 		}
 
-		return wp_validate_boolean( $block['attrs']['tableReflow'] );
+		return wp_validate_boolean( $block['attrs']['tablefold'] );
 	}
 
 	/**
@@ -166,8 +166,8 @@ final class Table_Reflow_Renderer {
 	 * @return string Breakpoint value in pixels.
 	 */
 	private function get_breakpoint( $block ) {
-		$raw = isset( $block['attrs']['tableReflowBreakpoint'] )
-			? $block['attrs']['tableReflowBreakpoint']
+		$raw = isset( $block['attrs']['tablefoldBreakpoint'] )
+			? $block['attrs']['tablefoldBreakpoint']
 			: null;
 
 		/*
@@ -177,9 +177,9 @@ final class Table_Reflow_Renderer {
 		 */
 		$requested = is_scalar( $raw ) ? (string) $raw : '';
 
-		return in_array( $requested, Table_Reflow_Config::get_breakpoint_values(), true )
+		return in_array( $requested, Tablefold_Config::get_breakpoint_values(), true )
 			? $requested
-			: Table_Reflow_Config::get_default_breakpoint();
+			: Tablefold_Config::get_default_breakpoint();
 	}
 
 	/**
@@ -569,7 +569,7 @@ final class Table_Reflow_Renderer {
 			}
 
 			if ( null === $processor->get_attribute( 'aria-label' ) && null === $processor->get_attribute( 'aria-labelledby' ) ) {
-				$label = '' !== $caption ? $caption : Table_Reflow_Config::get_scrollable_label();
+				$label = '' !== $caption ? $caption : Tablefold_Config::get_scrollable_label();
 
 				if ( ! $processor->set_attribute( 'aria-label', $label ) ) {
 					return null;

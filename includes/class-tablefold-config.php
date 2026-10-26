@@ -2,7 +2,7 @@
 /**
  * Plugin defaults and public extension points.
  *
- * @package TableReflow
+ * @package Tablefold
  * @since   1.0.0
  */
 
@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 1.0.0
  */
-final class Table_Reflow_Config {
+final class Tablefold_Config {
 
 	/**
 	 * Breakpoint applied when a table does not specify one.
@@ -33,7 +33,7 @@ final class Table_Reflow_Config {
 	 * Returns the breakpoint values the plugin accepts, as strings of pixels.
 	 *
 	 * Every value returned here must have a matching media query in
-	 * assets/css/table-reflow.css. A media query condition cannot read a CSS
+	 * assets/css/tablefold.css. A media query condition cannot read a CSS
 	 * custom property, so the set of breakpoints is deliberately closed: adding
 	 * a value without adding its stylesheet rules would silently do nothing.
 	 *
@@ -58,7 +58,7 @@ final class Table_Reflow_Config {
 		 *
 		 * @param string[] $values List of accepted breakpoint values, in pixels.
 		 */
-		$values = (array) apply_filters( 'table_reflow_breakpoint_values', $values );
+		$values = (array) apply_filters( 'tablefold_breakpoint_values', $values );
 
 		$values = array_values( array_unique( array_map( 'strval', $values ) ) );
 
@@ -76,10 +76,10 @@ final class Table_Reflow_Config {
 	 */
 	public static function get_breakpoint_choices() {
 		$labels = array(
-			'480' => __( 'Small phones', 'table-reflow' ),
-			'600' => __( 'Phones', 'table-reflow' ),
-			'782' => __( 'Small tablets', 'table-reflow' ),
-			'960' => __( 'Tablets', 'table-reflow' ),
+			'480' => __( 'Small phones', 'tablefold' ),
+			'600' => __( 'Phones', 'tablefold' ),
+			'782' => __( 'Small tablets', 'tablefold' ),
+			'960' => __( 'Tablets', 'tablefold' ),
 		);
 
 		$choices = array();
@@ -87,10 +87,10 @@ final class Table_Reflow_Config {
 		foreach ( self::get_breakpoint_values() as $value ) {
 			if ( isset( $labels[ $value ] ) ) {
 				/* translators: 1: human readable device name, for example "Phones". 2: viewport width in pixels, for example "600". */
-				$label = sprintf( __( '%1$s – under %2$spx', 'table-reflow' ), $labels[ $value ], $value );
+				$label = sprintf( __( '%1$s – under %2$spx', 'tablefold' ), $labels[ $value ], $value );
 			} else {
 				/* translators: %s: viewport width in pixels, for example "600". */
-				$label = sprintf( __( 'Under %spx', 'table-reflow' ), $value );
+				$label = sprintf( __( 'Under %spx', 'tablefold' ), $value );
 			}
 
 			$choices[] = array(
@@ -119,7 +119,7 @@ final class Table_Reflow_Config {
 		 *
 		 * @param string $default Breakpoint value in pixels.
 		 */
-		$default = (string) apply_filters( 'table_reflow_default_breakpoint', self::DEFAULT_BREAKPOINT );
+		$default = (string) apply_filters( 'tablefold_default_breakpoint', self::DEFAULT_BREAKPOINT );
 
 		return in_array( $default, $values, true ) ? $default : reset( $values );
 	}
@@ -137,7 +137,7 @@ final class Table_Reflow_Config {
 	 * @return string Accessible name for the scrollable container.
 	 */
 	public static function get_scrollable_label() {
-		$label = __( 'Table, scrollable sideways', 'table-reflow' );
+		$label = __( 'Table, scrollable sideways', 'tablefold' );
 
 		/**
 		 * Filters the accessible name of a horizontally scrollable table.
@@ -149,6 +149,6 @@ final class Table_Reflow_Config {
 		 *
 		 * @param string $label Accessible name for the scrollable container.
 		 */
-		return (string) apply_filters( 'table_reflow_scrollable_label', $label );
+		return (string) apply_filters( 'tablefold_scrollable_label', $label );
 	}
 }
