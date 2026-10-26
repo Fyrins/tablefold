@@ -1,4 +1,4 @@
-=== Table Reflow ===
+=== Tablefold ===
 Contributors: fyrins
 Donate link: https://github.com/sponsors/Fyrins
 Tags: accessibility, tables, responsive, wcag, a11y
@@ -15,7 +15,7 @@ Stack table blocks into readable cards on small screens instead of scrolling sid
 
 A data table that is wider than a phone screen forces the reader to scroll sideways. Success criterion **1.4.10 Reflow** of WCAG 2.2 says content must be readable at 320 pixels wide without scrolling on two axes, which is exactly what a wide table does. The same criterion is what the French RGAA 4 checks under its own numbering.
 
-Table Reflow adds one option to the table block of the WordPress editor: **Stack on small screens**. Below the width you pick, the table stops behaving like a table. Each row becomes a card, and each value is preceded by the name of its column, so the reader never has to remember which column they were in.
+Tablefold adds one option to the table block of the WordPress editor: **Stack on small screens**. Below the width you pick, the table stops behaving like a table. Each row becomes a card, and each value is preceded by the name of its column, so the reader never has to remember which column they were in.
 
 = Accessibility is the point, not a side effect =
 
@@ -54,7 +54,7 @@ The same criteria are what RGAA 4 checks under its own numbering. Testing with a
 
 = Development =
 
-Development happens in the open at https://github.com/Fyrins/table-reflow . The editor script and the stylesheet are built with `@wordpress/scripts`, the official tooling, and the sources live in `src/` in the repository.
+Development happens in the open at https://github.com/Fyrins/tablefold . The editor script and the stylesheet are built with `@wordpress/scripts`, the official tooling, and the sources live in `src/` in the repository.
 
 == Installation ==
 
@@ -77,7 +77,7 @@ Yes. The plugin sets no colour of its own. Labels inherit the text colour of the
 
 = Can I change the breakpoints? =
 
-Yes, with the `table_reflow_breakpoint_values` and `table_reflow_default_breakpoint` filters. Any value you add needs matching rules in a stylesheet you enqueue yourself, because a CSS media query cannot read a custom property.
+Yes, with the `tablefold_breakpoint_values` and `tablefold_default_breakpoint` filters. Any value you add needs matching rules in a stylesheet you enqueue yourself, because a CSS media query cannot read a custom property.
 
 = Does it slow pages down? =
 

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="Table Reflow">
-	<description>Coding standards for the Table Reflow plugin.</description>
+<ruleset name="Tablefold">
+	<description>Coding standards for the Tablefold plugin.</description>
 
 	<file>.</file>
 
@@ -38,9 +38,9 @@
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
-				<element value="table_reflow"/>
-				<element value="TABLE_REFLOW"/>
-				<element value="Table_Reflow"/>
+				<element value="tablefold"/>
+				<element value="TABLEFOLD"/>
+				<element value="Tablefold"/>
 			</property>
 		</properties>
 	</rule>
@@ -49,7 +49,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="table-reflow"/>
+				<element value="tablefold"/>
 			</property>
 		</properties>
 	</rule>

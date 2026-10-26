@@ -2,7 +2,7 @@
 
 Every table structure the plugin can meet, what it is expected to do with it, and
 what a screen reader is expected to say. Add a row here before changing anything
-in `Table_Reflow_Renderer`.
+in `Tablefold_Renderer`.
 
 All cases assume the block option **Stack on small screens** is on, and the
 default breakpoint of 600px unless stated otherwise. "Narrow" means a viewport at
@@ -44,8 +44,8 @@ headers.
 Expected rendered markup:
 
 ```html
-<table class="table-reflow table-reflow--bp-600" role="table">
-  <thead role="rowgroup" class="table-reflow__head">
+<table class="tablefold tablefold--bp-600" role="table">
+  <thead role="rowgroup" class="tablefold__head">
     <tr role="row">
       <th scope="col" role="columnheader">Name</th>
       …
@@ -110,7 +110,7 @@ These structures are left exactly as they were, and their container is made
 reachable and named. Expected markup on the wrapper:
 
 ```html
-<figure class="wp-block-table table-reflow-scroll" tabindex="0" role="region"
+<figure class="wp-block-table tablefold-scroll" tabindex="0" role="region"
         aria-label="Table, scrollable sideways">
 ```
 

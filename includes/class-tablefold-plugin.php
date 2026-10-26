@@ -2,7 +2,7 @@
 /**
  * Plugin bootstrap: hook registration and asset loading.
  *
- * @package TableReflow
+ * @package Tablefold
  * @since   1.0.0
  */
 
@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 1.0.0
  */
-final class Table_Reflow_Plugin {
+final class Tablefold_Plugin {
 
 	/**
 	 * Handle of the front-end stylesheet.
@@ -25,7 +25,7 @@ final class Table_Reflow_Plugin {
 	 * @since 1.0.0
 	 * @var   string
 	 */
-	const STYLE_HANDLE = 'table-reflow';
+	const STYLE_HANDLE = 'tablefold';
 
 	/**
 	 * Handle of the editor script.
@@ -33,7 +33,7 @@ final class Table_Reflow_Plugin {
 	 * @since 1.0.0
 	 * @var   string
 	 */
-	const EDITOR_SCRIPT_HANDLE = 'table-reflow-editor';
+	const EDITOR_SCRIPT_HANDLE = 'tablefold-editor';
 
 	/**
 	 * Block the plugin extends.
@@ -47,7 +47,7 @@ final class Table_Reflow_Plugin {
 	 * Markup transformer.
 	 *
 	 * @since 1.0.0
-	 * @var   Table_Reflow_Renderer
+	 * @var   Tablefold_Renderer
 	 */
 	private $renderer;
 
@@ -57,7 +57,7 @@ final class Table_Reflow_Plugin {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-		$this->renderer = new Table_Reflow_Renderer( self::STYLE_HANDLE );
+		$this->renderer = new Tablefold_Renderer( self::STYLE_HANDLE );
 	}
 
 	/**
@@ -84,7 +84,7 @@ final class Table_Reflow_Plugin {
 	 * @return void
 	 */
 	public function register_assets() {
-		$asset_file = TABLE_REFLOW_PATH . 'build/index.asset.php';
+		$asset_file = TABLEFOLD_PATH . 'build/index.asset.php';
 
 		/*
 		 * The dependency array and the version come from the file @wordpress/scripts
@@ -98,12 +98,12 @@ final class Table_Reflow_Plugin {
 			? require $asset_file
 			: array(
 				'dependencies' => array(),
-				'version'      => TABLE_REFLOW_VERSION,
+				'version'      => TABLEFOLD_VERSION,
 			);
 
 		wp_register_style(
 			self::STYLE_HANDLE,
-			TABLE_REFLOW_URL . 'build/style-index.css',
+			TABLEFOLD_URL . 'build/style-index.css',
 			array(),
 			$asset['version']
 		);
@@ -114,17 +114,14 @@ final class Table_Reflow_Plugin {
 
 		wp_register_script(
 			self::EDITOR_SCRIPT_HANDLE,
-			TABLE_REFLOW_URL . 'build/index.js',
+			TABLEFOLD_URL . 'build/index.js',
 			$asset['dependencies'],
 			$asset['version'],
 			true
 		);
 
-		wp_set_script_translations(
-			self::EDITOR_SCRIPT_HANDLE,
-			'table-reflow',
-			TABLE_REFLOW_PATH . 'languages'
-		);
+		// No path: translations come as language packs from translate.wordpress.org.
+		wp_set_script_translations( self::EDITOR_SCRIPT_HANDLE, 'tablefold' );
 	}
 
 	/**
@@ -145,13 +142,13 @@ final class Table_Reflow_Plugin {
 		wp_enqueue_script( self::EDITOR_SCRIPT_HANDLE );
 
 		$settings = array(
-			'breakpoints'       => Table_Reflow_Config::get_breakpoint_choices(),
-			'defaultBreakpoint' => Table_Reflow_Config::get_default_breakpoint(),
+			'breakpoints'       => Tablefold_Config::get_breakpoint_choices(),
+			'defaultBreakpoint' => Tablefold_Config::get_default_breakpoint(),
 		);
 
 		wp_add_inline_script(
 			self::EDITOR_SCRIPT_HANDLE,
-			'window.tableReflowEditor = ' . wp_json_encode( $settings ) . ';',
+			'window.tablefoldEditor = ' . wp_json_encode( $settings ) . ';',
 			'before'
 		);
 	}

@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name:       Table Reflow
- * Plugin URI:        https://github.com/Fyrins/table-reflow
+ * Plugin Name:       Tablefold
+ * Plugin URI:        https://github.com/Fyrins/tablefold
  * Description:       Adds a "stacked on mobile" option to the WordPress table block. Below a chosen width each row becomes a card and every cell is prefixed with its column header, so tables stop scrolling sideways. Helps meet WCAG 2.2 success criterion 1.4.10 (Reflow).
  * Version:           1.0.0
  * Requires at least: 6.7
@@ -10,12 +10,14 @@
  * Author URI:        https://alexandre-revire.fr
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       table-reflow
+ * Text Domain:       tablefold
  * Domain Path:       /languages
  *
- * @package TableReflow
+ * @package Tablefold
  *
- * The name is deliberately short, and the readme.txt title matches it exactly.
+ * The name is a coined word, and the readme.txt title matches it exactly. The
+ * plugin review rejected the descriptive "Table Reflow" as too generic for the
+ * directory.
  *
  * wordpress.org derives the plugin slug from this header, and the slug cannot be
  * changed once the plugin is approved. A longer name would produce a slug that no
@@ -49,26 +51,26 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Plugin version, kept in sync with the readme.txt stable tag and the Git tag.
  */
-define( 'TABLE_REFLOW_VERSION', '1.0.0' );
+define( 'TABLEFOLD_VERSION', '1.0.0' );
 
 /**
  * Absolute path to the plugin main file.
  */
-define( 'TABLE_REFLOW_FILE', __FILE__ );
+define( 'TABLEFOLD_FILE', __FILE__ );
 
 /**
  * Absolute path to the plugin directory, with a trailing slash.
  */
-define( 'TABLE_REFLOW_PATH', plugin_dir_path( __FILE__ ) );
+define( 'TABLEFOLD_PATH', plugin_dir_path( __FILE__ ) );
 
 /**
  * Public URL of the plugin directory, with a trailing slash.
  */
-define( 'TABLE_REFLOW_URL', plugin_dir_url( __FILE__ ) );
+define( 'TABLEFOLD_URL', plugin_dir_url( __FILE__ ) );
 
-require_once TABLE_REFLOW_PATH . 'includes/class-table-reflow-config.php';
-require_once TABLE_REFLOW_PATH . 'includes/class-table-reflow-renderer.php';
-require_once TABLE_REFLOW_PATH . 'includes/class-table-reflow-plugin.php';
+require_once TABLEFOLD_PATH . 'includes/class-tablefold-config.php';
+require_once TABLEFOLD_PATH . 'includes/class-tablefold-renderer.php';
+require_once TABLEFOLD_PATH . 'includes/class-tablefold-plugin.php';
 
 /**
  * Boots the plugin.
@@ -78,17 +80,17 @@ require_once TABLE_REFLOW_PATH . 'includes/class-table-reflow-plugin.php';
  *
  * @since 1.0.0
  *
- * @return Table_Reflow_Plugin The plugin instance.
+ * @return Tablefold_Plugin The plugin instance.
  */
-function table_reflow_bootstrap() {
+function tablefold_bootstrap() {
 	static $plugin = null;
 
 	if ( null === $plugin ) {
-		$plugin = new Table_Reflow_Plugin();
+		$plugin = new Tablefold_Plugin();
 		$plugin->register_hooks();
 	}
 
 	return $plugin;
 }
 
-table_reflow_bootstrap();
+tablefold_bootstrap();

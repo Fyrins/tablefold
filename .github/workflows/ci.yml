@@ -75,17 +75,17 @@ jobs:
       # directory name or every text domain check misfires.
       - name: Build the publishable package
         run: |
-          mkdir -p build/table-reflow
+          mkdir -p build/tablefold
           rsync -a --delete --delete-excluded \
             --exclude-from=.distignore \
-            ./ build/table-reflow/
+            ./ build/tablefold/
           echo 'Package contents:'
-          find build/table-reflow -type f | sort
+          find build/tablefold -type f | sort
 
       - name: Run the official Plugin Check
         uses: wordpress/plugin-check-action@v1
         with:
-          build-dir: './build/table-reflow'
+          build-dir: './build/tablefold'
           categories: |
             general
             plugin_repo
