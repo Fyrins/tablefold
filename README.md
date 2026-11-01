@@ -4,13 +4,14 @@
 
 Makes `core/table` blocks reflow into stacked cards on small screens. Server-rendered PHP + CSS, no JavaScript, ARIA roles preserved.
 
+[![WordPress plugin](https://img.shields.io/wordpress/plugin/v/tablefold.svg)](https://wordpress.org/plugins/tablefold/)
 [![CI](https://github.com/Fyrins/tablefold/actions/workflows/ci.yml/badge.svg)](https://github.com/Fyrins/tablefold/actions/workflows/ci.yml)
 [![License: GPL v2](https://img.shields.io/badge/license-GPL--2.0--or--later-blue.svg)](LICENSE)
 [![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ea4aaa.svg)](https://github.com/sponsors/Fyrins)
 
 A data table wider than a phone screen forces sideways scrolling, which WCAG 2.2 success criterion [1.4.10 Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) rules out at 320 CSS pixels. This plugin adds one option to the table block: below a chosen width, each row becomes a card and each value is preceded by its column name.
 
-- Plugin page: *submitted, awaiting review on wordpress.org*
+- Plugin page: [wordpress.org/plugins/tablefold](https://wordpress.org/plugins/tablefold/)
 - Requires WordPress 6.7, PHP 7.4
 - Licensed GPL-2.0-or-later
 
