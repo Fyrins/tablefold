@@ -1,24 +1,27 @@
+<div align="center">
+
+<img src=".wordpress-org/icon-256x256.png" alt="" width="96" height="96">
+
 # Tablefold
 
-[![WordPress.org plugin version](https://img.shields.io/wordpress/plugin/v/tablefold?label=wordpress.org&logo=wordpress)](https://wordpress.org/plugins/tablefold/)
+Makes `core/table` blocks reflow into stacked cards on small screens.<br>
+Server-rendered PHP + CSS, no JavaScript, ARIA roles preserved.
+
+[![Version on wordpress.org](https://img.shields.io/wordpress/plugin/v/tablefold?label=wordpress.org&logo=wordpress)](https://wordpress.org/plugins/tablefold/)
 [![Tested up to](https://img.shields.io/wordpress/plugin/tested/tablefold?logo=wordpress)](https://wordpress.org/plugins/tablefold/)
 [![Requires WordPress](https://img.shields.io/wordpress/plugin/wp-version/tablefold?label=requires%20wordpress)](https://wordpress.org/plugins/tablefold/)
 [![Requires PHP](https://img.shields.io/wordpress/plugin/required-php/tablefold?logo=php&logoColor=white)](https://wordpress.org/plugins/tablefold/)
+[![CI](https://github.com/Fyrins/tablefold/actions/workflows/ci.yml/badge.svg)](https://github.com/Fyrins/tablefold/actions/workflows/ci.yml)
+[![License: GPL-2.0-or-later](https://img.shields.io/badge/license-GPL--2.0--or--later-blue)](LICENSE)
+[![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/Fyrins)
+
+**[Plugin page](https://wordpress.org/plugins/tablefold/)** · **[Changelog](CHANGELOG.md)** · **[Contributing](CONTRIBUTING.md)** · **[Sponsor](https://github.com/sponsors/Fyrins)**
+
+</div>
 
 ![A wide data table on the left, an arrow, and the same data on the right as a stack of cards where each value sits under its column name.](.wordpress-org/banner-1544x500.png)
 
-Makes `core/table` blocks reflow into stacked cards on small screens. Server-rendered PHP + CSS, no JavaScript, ARIA roles preserved.
-
-[![WordPress plugin](https://img.shields.io/wordpress/plugin/v/tablefold.svg)](https://wordpress.org/plugins/tablefold/)
-[![CI](https://github.com/Fyrins/tablefold/actions/workflows/ci.yml/badge.svg)](https://github.com/Fyrins/tablefold/actions/workflows/ci.yml)
-[![License: GPL v2](https://img.shields.io/badge/license-GPL--2.0--or--later-blue.svg)](LICENSE)
-[![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ea4aaa.svg)](https://github.com/sponsors/Fyrins)
-
 A data table wider than a phone screen forces sideways scrolling, which WCAG 2.2 success criterion [1.4.10 Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) rules out at 320 CSS pixels. This plugin adds one option to the table block: below a chosen width, each row becomes a card and each value is preceded by its column name.
-
-- Plugin page: [wordpress.org/plugins/tablefold](https://wordpress.org/plugins/tablefold/)
-- Requires WordPress 6.7, PHP 7.4
-- Licensed GPL-2.0-or-later
 
 ## What it looks like
 
