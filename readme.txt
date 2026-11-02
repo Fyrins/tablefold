@@ -13,6 +13,8 @@ Stack table blocks into readable cards on small screens instead of scrolling sid
 
 == Description ==
 
+https://www.youtube.com/watch?v=W0j6jYfyu5U
+
 A data table that is wider than a phone screen forces the reader to scroll sideways. Success criterion **1.4.10 Reflow** of WCAG 2.2 says content must be readable at 320 pixels wide without scrolling on two axes, which is exactly what a wide table does. The same criterion is what the French RGAA 4 checks under its own numbering.
 
 Tablefold adds one option to the table block of the WordPress editor: **Stack on small screens**. Below the width you pick, the table stops behaving like a table. Each row becomes a card, and each value is preceded by the name of its column, so the reader never has to remember which column they were in.
