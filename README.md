@@ -1,5 +1,10 @@
 # Tablefold
 
+[![WordPress.org plugin version](https://img.shields.io/wordpress/plugin/v/tablefold?label=wordpress.org&logo=wordpress)](https://wordpress.org/plugins/tablefold/)
+[![Tested up to](https://img.shields.io/wordpress/plugin/tested/tablefold?logo=wordpress)](https://wordpress.org/plugins/tablefold/)
+[![Requires WordPress](https://img.shields.io/wordpress/plugin/wp-version/tablefold?label=requires%20wordpress)](https://wordpress.org/plugins/tablefold/)
+[![Requires PHP](https://img.shields.io/wordpress/plugin/required-php/tablefold?logo=php&logoColor=white)](https://wordpress.org/plugins/tablefold/)
+
 ![A wide data table on the left, an arrow, and the same data on the right as a stack of cards where each value sits under its column name.](.wordpress-org/banner-1544x500.png)
 
 Makes `core/table` blocks reflow into stacked cards on small screens. Server-rendered PHP + CSS, no JavaScript, ARIA roles preserved.
