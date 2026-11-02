@@ -23,6 +23,10 @@ A data table wider than a phone screen forces sideways scrolling, which WCAG 2.2
 
 ## What it looks like
 
+![In the editor, Stack on small screens is switched on for a four-column table and the page is saved. The published page then shows each row as a card in a 390 px phone frame.](.github/media/demo.gif)
+
+<em>One switch in the table sidebar, then the published page at phone width.</em>
+
 The table is untouched above the chosen width, and stacks below it. Same markup, same reading order, same ARIA roles.
 
 <table>
