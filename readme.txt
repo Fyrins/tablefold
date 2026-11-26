@@ -3,7 +3,7 @@ Contributors: fyrins
 Donate link: https://github.com/sponsors/Fyrins
 Tags: accessibility, tables, responsive, wcag, a11y
 Requires at least: 6.7
-Tested up to: 7.1
+Tested up to: 7.2
 Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPL-2.0-or-later
